@@ -4,7 +4,7 @@
 
 ## 🌐 Website
 
-Learn AI at: (deploy to Netlify/Vercel)
+**Live:** https://learn-guide.vercel.app
 
 ## 📚 Content
 
