@@ -1,5 +1,10 @@
 # Chatbot Template
 
+## 🌐 Live Demo
+**https://chatbot-ai-template.netlify.app**
+
+> 🎓 Part of the [Learn AI Guide](https://learnai-guide.netlify.app) — free templates for everyone!
+
 > A beautiful, customizable AI chatbot interface with real-time responses!
 
 ## ✨ Features

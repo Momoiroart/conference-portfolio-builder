@@ -1,5 +1,10 @@
 # Game Template
 
+## 🌐 Live Demo
+**https://game-template-demo.netlify.app**
+
+> 🎓 Part of the [Learn AI Guide](https://learnai-guide.netlify.app) — free templates for everyone!
+
 > A space shooter game template with stunning visuals, particles, and scoring system!
 
 ## ✨ Features

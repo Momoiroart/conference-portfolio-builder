@@ -1,5 +1,10 @@
 # Portfolio AI Template
 
+## 🌐 Live Demo
+**https://ai-portfolio-template.netlify.app**
+
+> 🎓 Part of the [Learn AI Guide](https://learnai-guide.netlify.app) — free templates for everyone!
+
 > An interactive portfolio with a built-in AI chat widget that can answer questions about you!
 
 ## ✨ Features
