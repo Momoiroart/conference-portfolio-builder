@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio | AI-Powered</title>
+  <meta name="description" content="My personal portfolio with AI chat">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── YOUR COLORS ── */
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-tertiary: #1a1a24;
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --accent: #ff6b9d;
+      --accent-secondary: #4af0e8;
+      --accent-glow: rgba(255,107,157,0.3);
+      --card-bg: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --chat-user: #2a2a3a;
+      --chat-ai: #1e1e2a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND ── */
+    .bg-gradient {
+      position: fixed; inset: 0;
+      background: 
+        radial-gradient(ellipse at 20% 20%, rgba(255,107,157,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(74,240,232,0.06) 0%, transparent 50%),
+        var(--bg-primary);
+      z-index: -1;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── HEADER ── */
+    header {
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(16px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(74,240,232,0.1);
+      border: 1px solid rgba(74,240,232,0.3);
+      border-radius: 100px;
+      font-size: 11px;
+      color: var(--accent-secondary);
+    }
+
+    .ai-badge::before {
+      content: '●';
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 0 80px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(42px, 8vw, 70px);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--text-secondary);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-secondary);
+      color: var(--accent-secondary);
+    }
+
+    /* ── AI CHAT WIDGET ── */
+    .chat-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+    }
+
+    .chat-toggle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 8px 32px var(--accent-glow);
+      transition: transform 0.2s;
+    }
+
+    .chat-toggle:hover { transform: scale(1.08); }
+
+    .chat-window {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      width: 380px;
+      height: 500px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    }
+
+    .chat-window.active { display: flex; }
+
+    .chat-header {
+      padding: 16px 20px;
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-status {
+      font-size: 11px;
+      color: var(--accent-secondary);
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .message.ai {
+      background: var(--chat-ai);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .message.user {
+      background: var(--chat-user);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message.system {
+      background: transparent;
+      align-self: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 8px;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 12px 16px;
+      background: var(--chat-ai);
+      border-radius: 12px;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      display: none;
+    }
+
+    .typing-indicator.active { display: flex; }
+
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: 0s; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-length: 0.4s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+    }
+
+    .chat-input-area {
+      padding: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 12px 16px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .chat-send {
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .chat-send:hover {
+      background: var(--accent-secondary);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 0; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-secondary);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    /* ── ABOUT ── */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-image {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 20px;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,107,157,0.1), transparent);
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: all 0.25s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 16px 48px rgba(255,107,157,0.1);
+    }
+
+    .skill-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .skill-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .skill-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-secondary);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      position: relative;
+    }
+
+    .project-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--card-bg), transparent);
+    }
+
+    .project-info {
+      padding: 24px;
+    }
+
+    .project-info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .project-info p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 5px 12px;
+      background: rgba(74,240,232,0.1);
+      border: 1px solid rgba(74,240,232,0.25);
+      border-radius: 100px;
+      color: var(--accent-secondary);
+    }
+
+    /* ── CODE SECTION ── */
+    .code-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      overflow: hidden;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .code-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .code-dot.red { background: #ff5f57; }
+    .code-dot.yellow { background: #ffbd2e; }
+    .code-dot.green { background: #28ca42; }
+
+    .code-block {
+      background: var(--bg-primary);
+      border-radius: 10px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .code-block .keyword { color: var(--accent); }
+    .code-block .string { color: var(--accent-secondary); }
+    .code-block .function { color: #c792ea; }
+    .code-block .comment { color: var(--text-muted); }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .contact-card span {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-card h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .contact-card p {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-content { grid-template-columns: 1fr; }
+      .about-image { max-width: 220px; margin: 0 auto; }
+      .chat-window {
+        width: calc(100vw - 32px);
+        right: -12px;
+        height: 450px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Your<span>Name</span></a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#code">Code</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="ai-badge">AI Ready</div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-label">Welcome to my portfolio</p>
+        <h1>Hi, I'm Your Name<br><span>Developer & Creator</span></h1>
+        <p>I build things with code. Chat with my AI assistant to learn more about me and my work!</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="about-content">
+        <div class="about-image">👨‍💻</div>
+        <div class="about-text">
+          <p>I'm a developer based in [Your Location] with a passion for building useful and beautiful things.</p>
+          <p>I work with web technologies, AI tools, and enjoy creating projects that solve real problems. My journey started with [your story].</p>
+          <p>When I'm not coding, you can find me [your hobbies]. I believe in continuous learning and open source!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">What I Do</p>
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3>Web Development</h3>
+          <p>HTML, CSS, JavaScript, React, and modern frontend frameworks.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🤖</div>
+          <h3>AI & Machine Learning</h3>
+          <p>Working with Ollama, Claude Code, and local AI models.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎮</div>
+          <h3>Game Development</h3>
+          <p>Unity, Roblox, and interactive experiences.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🐍</div>
+          <h3>Python</h3>
+          <p>Automation, APIs, data processing, and backend services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">My Work</p>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">🚀</div>
+          <div class="project-info">
+            <h3>Project One</h3>
+            <p>A web application that does something amazing. Built with modern tools.</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">💡</div>
+          <div class="project-info">
+            <h3>Project Two</h3>
+            <p>An AI-powered tool that helps with daily tasks using local LLMs.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Ollama</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image">🎨</div>
+          <div class="project-info">
+            <h3>Project Three</h3>
+            <p>A creative portfolio or game project showing design skills.</p>
+            <div class="project-tags">
+              <span class="tag">Unity</span>
+              <span class="tag">C#</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODE SECTION -->
+  <section id="code">
+    <div class="container">
+      <p class="section-label">What I Write</p>
+      <h2 class="section-title">Code Samples</h2>
+      <div class="code-section">
+        <div class="code-header">
+          <span class="code-dot red"></span>
+          <span class="code-dot yellow"></span>
+          <span class="code-dot green"></span>
+        </div>
+        <div class="code-block">
+          <pre><code><span class="comment"># Simple Python function example</span>
+<span class="keyword">def</span> <span class="function">greet</span>(name):
+    <span class="string">"""Greet a user with a personalized message."""</span>
+    messages = [
+        <span class="string">f"Hello, {name}! Welcome back!"</span>,
+        <span class="string">f"Hey {name}! Great to see you!"</span>,
+        <span class="string">f"Hi {name}! Ready to build something cool?"</span>
+    ]
+    <span class="keyword">return</span> random.choice(messages)
+
+<span class="comment"># Call the function</span>
+<span class="keyword">print</span>(greet(<span class="string">"Developer"</span>))</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Let's Connect</p>
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-grid">
+        <a href="mailto:your@email.com" class="contact-card">
+          <span>📧</span>
+          <h4>Email</h4>
+          <p>your@email.com</p>
+        </a>
+        <a href="https://github.com/yourusername" target="_blank" class="contact-card">
+          <span>🐙</span>
+          <h4>GitHub</h4>
+          <p>@yourusername</p>
+        </a>
+        <a href="https://twitter.com/yourusername" target="_blank" class="contact-card">
+          <span>🐦</span>
+          <h4>Twitter</h4>
+          <p>@yourusername</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Your Name. Built with ❤️ and AI.</p>
+    </div>
+  </footer>
+
+  <!-- AI CHAT WIDGET -->
+  <div class="chat-widget">
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <h3>
+          <span class="ai-badge" style="padding: 4px 8px; font-size: 10px;">●</span>
+          AI Assistant
+        </h3>
+        <span class="chat-status" id="chatStatus">Demo Mode</span>
+        <button class="chat-close" onclick="toggleChat()">×</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message system">AI Chat Demo — Edit the code to connect to Ollama!</div>
+        <div class="message ai">Hi! I'm an AI assistant for this portfolio. Ask me anything about the owner!</div>
+      </div>
+      <div class="typing-indicator" id="typingIndicator">
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+      </div>
+      <div class="chat-input-area">
+        <textarea class="chat-input" id="chatInput" placeholder="Ask about my projects, skills..." rows="1"></textarea>
+        <button class="chat-send" onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+    <button class="chat-toggle" onclick="toggleChat()">💬</button>
+  </div>
+
+  <script>
+    // ── CHAT WIDGET FUNCTIONALITY ──
+    const chatWindow = document.getElementById('chatWindow');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const typingIndicator = document.getElementById('typingIndicator');
+
+    // Your portfolio data - EDIT THIS!
+    const portfolioData = {
+      name: "Your Name",
+      location: "[Your Location]",
+      skills: ["Web Development", "AI & ML", "Game Dev", "Python"],
+      projects: [
+        { name: "Project One", description: "A web application", tags: ["React", "Node.js"] },
+        { name: "Project Two", description: "AI-powered tool", tags: ["Python", "Ollama"] },
+        { name: "Project Three", description: "Creative portfolio", tags: ["Unity", "C#"] }
+      ],
+      interests: ["coding", "AI", "games", "learning new things"],
+      contact: "your@email.com"
+    };
+
+    // Simple AI responses (demo mode)
+    const responses = [
+      {
+        keywords: ['hello', 'hi', 'hey', 'greetings'],
+        response: `Hi there! I'm the AI assistant for ${portfolioData.name}'s portfolio. Feel free to ask about their projects, skills, or anything else!`
+      },
+      {
+        keywords: ['name', 'who'],
+        response: `${portfolioData.name} is a developer based in ${portfolioData.location}. They love building things with code!`
+      },
+      {
+        keywords: ['skills', 'know', 'technologies', 'tech'],
+        response: `${portfolioData.name} works with: ${portfolioData.skills.join(', ')}. They're always learning new things!`
+      },
+      {
+        keywords: ['project', 'work', 'built', 'portfolio'],
+        response: `Great question! Some of ${portfolioData.name}'s projects include: ${portfolioData.projects.map(p => p.name).join(', ')}. Want to know more about any specific project?`
+      },
+      {
+        keywords: ['contact', 'email', 'reach', 'connect'],
+        response: `You can reach ${portfolioData.name} at: ${portfolioData.contact}. They'd love to hear from you!`
+      },
+      {
+        keywords: ['location', 'where', 'based'],
+        response: `${portfolioData.name} is based in ${portfolioData.location}.`
+      },
+      {
+        keywords: ['thanks', 'thank', 'helpful'],
+        response: "You're welcome! Feel free to ask if you have more questions about the portfolio!"
+      }
+    ];
+
+    function toggleChat() {
+      chatWindow.classList.toggle('active');
+    }
+
+    function addMessage(text, isUser = false) {
+      const msg = document.createElement('div');
+      msg.className = `message ${isUser ? 'user' : 'ai'}`;
+      msg.textContent = text;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function getAIResponse(userMessage) {
+      const lower = userMessage.toLowerCase();
+      
+      for (const rule of responses) {
+        for (const keyword of rule.keywords) {
+          if (lower.includes(keyword)) {
+            return rule.response;
+          }
+        }
+      }
+      
+      return `That's a great question! I'd recommend checking out the projects section or reaching out to ${portfolioData.name} directly at ${portfolioData.contact}.`;
+    }
+
+    async function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      addMessage(text, true);
+      chatInput.value = '';
+
+      // Show typing indicator
+      typingIndicator.classList.add('active');
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Simulate AI delay
+      await new Promise(r => setTimeout(r, 1000 + Math.random() * 1000));
+      
+      typingIndicator.classList.remove('active');
+      const response = getAIResponse(text);
+      addMessage(response);
+    }
+
+    // Handle Enter key
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // ── SMOOTH SCROLL ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ── SCROLL REVEAL ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.skill-card, .project-card, .contact-card, .code-section').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s, transform 0.6s';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
