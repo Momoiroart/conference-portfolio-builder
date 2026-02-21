@@ -1,9 +1,9 @@
 # Portfolio Basic Template
 
 ## 🌐 Live Demo
-**https://portfolio-basic-template.netlify.app**
+**https://portfolio-basic-woad.vercel.app**
 
-> 🎓 Part of the [Learn AI Guide](https://learnai-guide.netlify.app) — free templates for everyone!
+> 🎓 Part of the [Learn AI Guide](https://learn-guide.vercel.app) — free templates for everyone!
 
 > A beautiful, interactive portfolio template with custom cursor, animations, and modern design.
 
