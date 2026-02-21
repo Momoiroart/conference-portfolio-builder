@@ -1,0 +1,349 @@
+---
+layout: ../../layouts/Layout.astro
+title: Welcome to Learn AI!
+description: Learn to build amazing things with free AI tools
+---
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-badge">🚀 Free AI Learning</span>
+      <h1>Learn to Build with <span class="gradient">AI Tools</span></h1>
+      <p>Anyone can learn! Kids, teens, and adults. No experience needed. Build portfolios, games, and chatbots with free tools.</p>
+      <div class="hero-cta">
+        <a href="/kids" class="btn btn-primary">Start as Kid (10-14)</a>
+        <a href="/adults" class="btn btn-secondary">Start as Adult (15+)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Why Learn AI?</span>
+      <h2>What You'll Build</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🌐</span>
+        <h3>Web Portfolios</h3>
+        <p>Create your own website to show off your projects and skills.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎮</span>
+        <h3>Games</h3>
+        <p>Build fun games like space shooters, puzzles, and more.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🤖</span>
+        <h3>Chatbots</h3>
+        <p>Create AI assistants that can talk and help people.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">✨</span>
+        <h3>Custom Projects</h3>
+        <p>Use your imagination to build anything you want!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools Section -->
+<section class="tools">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Free Forever</span>
+      <h2>Tools You'll Use</h2>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">🦙</div>
+        <h3>Ollama</h3>
+        <p>Free AI that runs on your computer. No internet needed after install!</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">👨‍💻</div>
+        <h3>Claude Code</h3>
+        <p>AI coding assistant that helps you write code faster.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🌍</div>
+        <h3>Web Browsers</h3>
+        <p>Chrome, Firefox, or any browser to view your creations.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📝</div>
+        <h3>Text Editors</h3>
+        <p>VS Code - free editor for writing code.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paths Section -->
+<section class="paths">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Choose Your Path</span>
+      <h2>Learning Tracks</h2>
+    </div>
+    <div class="paths-grid">
+      <a href="/kids" class="path-card">
+        <span class="path-icon">🎯</span>
+        <h3>Kids Track</h3>
+        <p>Ages 10-14</p>
+        <ul>
+          <li>What is AI?</li>
+          <li>Your first website</li>
+          <li>Build a game</li>
+          <li>Create a portfolio</li>
+        </ul>
+        <span class="btn btn-primary">Start Learning →</span>
+      </a>
+      <a href="/adults" class="path-card featured">
+        <span class="path-icon">💼</span>
+        <h3>Adults Track</h3>
+        <p>Ages 15+</p>
+        <ul>
+          <li>AI fundamentals</li>
+          <li>Web development</li>
+          <li>Python & APIs</li>
+          <li>Portfolio projects</li>
+        </ul>
+        <span class="btn btn-primary">Start Learning →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+  <div class="container">
+    <h2>Ready to Start?</h2>
+    <p>Join thousands of people learning to build with AI tools!</p>
+    <div class="hero-cta">
+      <a href="/kids" class="btn btn-primary">Start Now - It's Free!</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hero */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 0;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(255,107,157,0.1);
+    border: 1px solid rgba(255,107,157,0.3);
+    border-radius: 100px;
+    color: var(--accent);
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Sections */
+  section {
+    padding: 100px 0;
+  }
+
+  .section-header {
+    margin-bottom: 60px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-secondary);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+  }
+
+  /* Features */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+  }
+
+  .feature-icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .feature-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .feature-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+
+  /* Tools */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .tool-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .tool-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  .tool-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .tool-card p {
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+
+  /* Paths */
+  .paths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+
+  .path-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    display: block;
+  }
+
+  .path-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+  }
+
+  .path-card.featured {
+    border-color: var(--accent-secondary);
+    background: linear-gradient(135deg, var(--bg-card), rgba(74,240,232,0.05));
+  }
+
+  .path-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .path-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+
+  .path-card p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .path-card ul {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+
+  .path-card ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  .path-card ul li::before {
+    content: "✓ ";
+    color: var(--accent-secondary);
+  }
+
+  /* CTA */
+  .cta {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(74,240,232,0.1));
+  }
+
+  .cta h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 16px;
+  }
+
+  .cta p {
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+  }
+</style>

@@ -1,0 +1,317 @@
+---
+layout: ../../layouts/Layout.astro
+title: Adults Track
+description: Learn AI development as an adult beginner
+---
+
+<section class="hero">
+  <div class="container">
+    <span class="track-badge">Adults Track</span>
+    <h1>AI Development for <span class="gradient">Adults</span></h1>
+    <p class="lead">A comprehensive track for adults (15+) who want to learn to build with AI tools. From basics to advanced projects.</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="track-info">
+      <div class="info-card">
+        <span class="info-icon">⏱️</span>
+        <h3>4-6 Hours</h3>
+        <p>Complete track time</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">📚</span>
+        <h3>8 Modules</h3>
+        <p>From basics to projects</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🎯</span>
+        <h3>Beginner</h3>
+        <p>No experience needed</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🛠️</span>
+        <h3>Free Tools</h3>
+        <p>Ollama + Claude Code</p>
+      </div>
+    </div>
+
+    <div class="modules">
+      <h2>📋 Course Modules</h2>
+      
+      <div class="module">
+        <span class="module-num">1</span>
+        <div class="module-content">
+          <h3>AI Fundamentals</h3>
+          <p>Understanding AI, ML, and how language models work</p>
+        </div>
+      </div>
+      
+      <div class="module">
+        <span class="module-num">2</span>
+        <div class="module-content">
+          <h3>Setting Up Your Environment</h3>
+          <p>Install Ollama, VS Code, and essential tools</p>
+        </div>
+      </div>
+      
+      <div class="module">
+        <span class="module-num">3</span>
+        <div class="module-content">
+          <h3>HTML & CSS Basics</h3>
+          <p>Build beautiful websites from scratch</p>
+        </div>
+      </div>
+      
+      <div class="module">
+        <span class="module-num">4</span>
+        <div class="module-content">
+          <h3>JavaScript for Beginners</h3>
+          <p>Add interactivity to your websites</p>
+        </div>
+      </div>
+      
+      <div class="module">
+        <span class="module-num">5</span>
+        <div class="module-content">
+          <h3>Python Fundamentals</h3>
+          <p>Learn Python for AI integration</p>
+        </div>
+      </div>
+      
+      <div class="module">
+        <span class="module-num">6</span>
+        <div class="module-content">
+          <h3>Working with APIs</h3>
+          <p>Connect your apps to AI services</p>
+        </div>
+      </div>
+      
+      <div class="module">
+        <span class="module-num">7</span>
+        <div class="module-content">
+          <h3>Building Projects</h3>
+          <p>Portfolio, chatbot, and game projects</p>
+        </div>
+      </div>
+      
+      <div class="module">
+        <span class="module-num">8</span>
+        <div class="module-content">
+          <h3>Deployment & Sharing</h3>
+          <p>Put your projects online for free</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="resources">
+      <h2>📦 Included Resources</h2>
+      <div class="resources-grid">
+        <div class="resource">
+          <h4>📄 Portfolio Templates</h4>
+          <p>4 ready-to-use portfolio templates</p>
+        </div>
+        <div class="resource">
+          <h4>🎮 Game Template</h4>
+          <p>Space shooter with full source code</p>
+        </div>
+        <div class="resource">
+          <h4>💬 Chatbot Template</h4>
+          <p>AI chatbot with Ollama integration</p>
+        </div>
+        <div class="resource">
+          <h4>📖 Tutorial Guides</h4>
+          <p>Manual and AI-assisted setup guides</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <h2>🚀 Ready to Start?</h2>
+      <p>All resources are free! Start with Module 1 or jump to any section.</p>
+      <div class="cta-buttons">
+        <a href="/adults/module-1" class="btn btn-primary">Start Learning</a>
+        <a href="/kids" class="btn btn-secondary">Try Kids Track</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 100px 0 60px;
+    text-align: center;
+  }
+
+  .track-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(74,240,232,0.1);
+    border: 1px solid rgba(74,240,232,0.3);
+    border-radius: 100px;
+    color: var(--accent-secondary);
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lead {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content { padding: 60px 0; }
+
+  .track-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .info-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .info-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .info-card p {
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+
+  .modules { margin-bottom: 60px; }
+
+  .modules h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .module {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+  }
+
+  .module:hover {
+    border-color: var(--accent);
+  }
+
+  .module-num {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .module-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .module-content p {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+
+  .resources { margin-bottom: 60px; }
+
+  .resources h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .resource {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .resource h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .resource p {
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+
+  .cta-card {
+    background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(74,240,232,0.1));
+    border: 1px solid var(--accent);
+    border-radius: 24px;
+    padding: 48px;
+    text-align: center;
+  }
+
+  .cta-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .cta-card p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

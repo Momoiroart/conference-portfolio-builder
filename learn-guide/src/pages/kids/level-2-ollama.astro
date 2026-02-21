@@ -1,0 +1,263 @@
+---
+layout: ../../../layouts/Layout.astro
+title: Meet Ollama
+description: Install and use Ollama - your local AI
+---
+
+<section class="hero">
+  <div class="container">
+    <span class="lesson-badge">Level 2</span>
+    <h1>Meet <span class="gradient">Ollama</span></h1>
+    <p class="lead">Ollama is a free AI that runs on your computer! No internet needed after you install it.</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="lesson-card">
+      <h2>🦙 What is Ollama?</h2>
+      <p>Ollama is a free tool that lets you run AI on your own computer. It's like having a smart assistant right in your machine!</p>
+      
+      <div class="features">
+        <div class="feature">
+          <span class="icon">💰</span>
+          <div>
+            <h4>Free Forever</h4>
+            <p>No payments, no subscriptions</p>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="icon">🔒</span>
+          <div>
+            <h4>Private</h4>
+            <p>Your conversations stay on your computer</p>
+          </div>
+        </div>
+        <div class="feature">
+          <span class="icon">⚡</span>
+          <div>
+            <h4>Fast</h4>
+            <p>Works even without internet!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-card install">
+      <h2>📥 Install Ollama</h2>
+      <p>Let's get Ollama installed on your computer!</p>
+      
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h4>Download Ollama</h4>
+            <p>Go to <a href="https://ollama.com" target="_blank">ollama.com</a> and click Download</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h4>Install</h4>
+            <p>Open the file you downloaded and follow the steps</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h4>Test it!</h4>
+            <p>Open terminal/command prompt and type: <code>ollama --version</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <h2>🤖 Download an AI Model</h2>
+      <p>AI models are like brains for Ollama. Let's download one!</p>
+      
+      <div class="code-block">
+        <pre><code>ollama pull llama3.2</code></pre>
+      </div>
+      <p class="note">This might take a few minutes. The model is about 2-4GB.</p>
+    </div>
+
+    <div class="lesson-card">
+      <h2>💬 Talk to Your AI!</h2>
+      <p>Now let's chat with your AI!</p>
+      
+      <div class="code-block">
+        <pre><code>ollama run llama3.2</code></pre>
+      </div>
+      <p>Type your message and press Enter. Type <code>/quit</code> to exit.</p>
+    </div>
+
+    <div class="lesson-card activity">
+      <h2>🎮 Try This!</h2>
+      <p>Ask your AI these questions:</p>
+      <ul>
+        <li>"Tell me a joke"</li>
+        <li>"What is Python?"</li>
+        <li>"Help me write a story about a dragon"</li>
+      </ul>
+    </div>
+
+    <div class="navigation">
+      <a href="/kids/level-1-ai-basics" class="btn btn-secondary">← Previous: AI Basics</a>
+      <a href="/kids/level-3-first-project" class="btn btn-primary">Next: Your First Project →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+
+  .lesson-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(74,240,232,0.1);
+    border: 1px solid rgba(74,240,232,0.3);
+    border-radius: 100px;
+    color: var(--accent-secondary);
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lead {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content { padding: 40px 0 80px; }
+
+  .lesson-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .lesson-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .lesson-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .feature {
+    display: flex;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .feature .icon {
+    font-size: 24px;
+  }
+
+  .feature h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .feature p {
+    font-size: 13px;
+  }
+
+  .install { background: linear-gradient(135deg, var(--bg-card), rgba(74,240,232,0.05)); }
+
+  .steps { margin-top: 24px; }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .step h4 { margin-bottom: 4px; }
+  .step p { font-size: 14px; }
+
+  .step a { color: var(--accent-secondary); }
+
+  .code-block {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+
+  .code-block pre { margin: 0; }
+
+  .code-block code {
+    font-family: 'Fira Code', monospace;
+    color: var(--accent-secondary);
+  }
+
+  .note {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .activity ul {
+    margin-top: 16px;
+    padding-left: 20px;
+  }
+
+  .activity li {
+    padding: 8px 0;
+    color: var(--text-secondary);
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 40px;
+  }
+</style>

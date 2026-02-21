@@ -1,0 +1,275 @@
+---
+layout: ../../../layouts/Layout.astro
+title: Your First Project
+description: Build your first website with AI help
+---
+
+<section class="hero">
+  <div class="container">
+    <span class="lesson-badge">Level 3</span>
+    <h1>Your First <span class="gradient">Project</span></h1>
+    <p class="lead">Let's build a cool website together! We'll use AI to help us write the code.</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="lesson-card">
+      <h2>🚀 What We're Building</h2>
+      <p>We're going to create a personal portfolio website - a webpage all about you! It will have:</p>
+      <ul class="checklist">
+        <li>✅ Your name and photo</li>
+        <li>✅ Things you're good at (skills)</li>
+        <li>✅ Cool projects you've made</li>
+        <li>✅ How to contact you</li>
+      </ul>
+    </div>
+
+    <div class="lesson-card">
+      <h2>📝 Step 1: Create a Folder</h2>
+      <p>First, let's create a place to store your website files.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h4>Create a new folder on your computer</h4>
+            <p>Name it <code>my-portfolio</code></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h4>Open that folder</h4>
+            <p>Right-click inside and create a new text file</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h4>Name it <code>index.html</code></h4>
+            <p>Make sure it ends in .html not .txt!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <h2>🎨 Step 2: Add Your Content</h2>
+      <p>Now let's add content to your page. Copy this code:</p>
+      
+      <div class="code-block">
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Portfolio&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hi, I'm [Your Name]!&lt;/h1&gt;
+  &lt;p&gt;Welcome to my portfolio!&lt;/p&gt;
+  
+  &lt;h2&gt;About Me&lt;/h2&gt;
+  &lt;p&gt;[Write something about yourself]&lt;/p&gt;
+  
+  &lt;h2&gt;My Skills&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Skill 1&lt;/li&gt;
+    &lt;li&gt;Skill 2&lt;/li&gt;
+  &lt;/ul&gt;
+  
+  &lt;h2&gt;Contact&lt;/h2&gt;
+  &lt;p&gt;Email: your@email.com&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+      <p class="note">Replace [Your Name] and the other parts with your info!</p>
+    </div>
+
+    <div class="lesson-card">
+      <h2>🎯 Step 3: View Your Website</h2>
+      <p>Let's see what you made!</p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h4>Find your index.html file</h4>
+            <p>Go to the folder where you saved it</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h4>Double-click the file</h4>
+            <p>It should open in your web browser!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-card ai-tip">
+      <h2>🤖 Want to make it cooler?</h2>
+      <p>Use the portfolio templates we created! They're pre-made websites that look amazing.</p>
+      <p>Download from: <code>github.com/Momoiroart/conference-portfolio-builder</code></p>
+    </div>
+
+    <div class="lesson-card activity">
+      <h2>🎮 Challenge!</h2>
+      <p>Add these to your website:</p>
+      <ul>
+        <li>A second page with your favorite games</li>
+        <li>A list of your favorite books or movies</li>
+        <li>Links to your social media</li>
+      </ul>
+    </div>
+
+    <div class="navigation">
+      <a href="/kids/level-2-ollama" class="btn btn-secondary">← Previous: Meet Ollama</a>
+      <a href="/kids/level-4-portfolio" class="btn btn-primary">Next: Portfolio Tips →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+
+  .lesson-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(74,240,232,0.1);
+    border: 1px solid rgba(74,240,232,0.3);
+    border-radius: 100px;
+    color: var(--accent-secondary);
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .lead {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content { padding: 40px 0 80px; }
+
+  .lesson-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .lesson-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .lesson-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .checklist {
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  .checklist li {
+    padding: 8px 0;
+    font-size: 15px;
+  }
+
+  .steps { margin-top: 20px; }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .step h4 { margin-bottom: 4px; }
+  .step p { font-size: 14px; }
+
+  .code-block {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+
+  .code-block pre { margin: 0; }
+
+  .code-block code {
+    font-family: 'Fira Code', monospace;
+    color: var(--accent-secondary);
+    font-size: 13px;
+  }
+
+  .note {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .ai-tip {
+    background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(74,240,232,0.1));
+    border-color: rgba(168,85,247,0.3);
+  }
+
+  .ai-tip code {
+    background: var(--bg-primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--accent);
+  }
+
+  .activity ul {
+    margin-top: 16px;
+    padding-left: 20px;
+  }
+
+  .activity li {
+    padding: 8px 0;
+    color: var(--text-secondary);
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 40px;
+  }
+</style>
