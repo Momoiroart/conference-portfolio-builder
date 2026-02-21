@@ -1,24 +1,62 @@
 # Portfolio AI Template
 
-> An AI-powered portfolio with a built-in chat widget that can answer questions about you!
+> An interactive portfolio with a built-in AI chat widget that can answer questions about you!
 
 ## ✨ Features
 
 - **AI Chat Widget** — Visitors can chat with an AI that knows about you
-- **Demo Mode** — Works out of the box with simple JSON config
-- **Ollama Ready** — Can connect to local Ollama for real AI responses
-- **Code Section** — Show off your code with syntax highlighting
-- **Modern Design** — Dark theme with pink/cyan accents
-- **Responsive** — Works on mobile and desktop
+- **Custom Cursor** — Smooth following cursor with hover effects
+- **Animated Background** — Floating orbs + starfield canvas
+- **Scroll Reveal** — Elements animate in as you scroll
+- **Hover Effects** — Cards lift and glow on hover
+- **Code Section** — Syntax-highlighted code display
+- **Clean & Modern** — Easy to read, stands out
 - **Single File** — Everything in one HTML file
+
+---
 
 ## 🚀 Quick Start
 
-### Step 1: Copy the Template
-Copy `index.html` to your computer.
+### Option 1: Manual Setup
 
-### Step 2: Edit Your Info
-Find the `portfolioData` object in the script and edit:
+1. Copy `index.html` to your computer
+2. Open in any text editor (VS Code recommended)
+3. Edit your info (see customization guide below)
+4. Open in browser to preview
+
+### Option 2: AI-Assisted Setup
+
+Use AI tools to customize faster:
+
+```bash
+# Tell AI what you want:
+"I want an AI portfolio for a game developer in Tokyo.
+Update the colors to purple theme.
+Change skills to: Unity, C#, Blender, Game Design."
+```
+
+See **AI Setup Guide** below!
+
+---
+
+## 📝 Manual Customization Guide
+
+### 1. Change Your Name
+
+```html
+<!-- Header -->
+<a href="#" class="logo">Your<span>Name</span></a>
+
+<!-- Hero -->
+<h1><span class="line gradient">Your Name</span></h1>
+
+<!-- Footer -->
+<p>© 2026 Your Name.</p>
+```
+
+### 2. Update Your Info for AI Chat
+
+**IMPORTANT:** Edit the `portfolioData` object in the JavaScript section:
 
 ```javascript
 const portfolioData = {
@@ -26,33 +64,61 @@ const portfolioData = {
   location: "Your City",
   skills: ["Web Dev", "Python", "AI"],
   projects: [
-    { name: "Project One", description: "...", tags: ["React"] }
+    { name: "Project One", description: "A web app", tags: ["React"] },
+    { name: "Project Two", description: "An AI tool", tags: ["Python", "Ollama"] },
+    { name: "Project Three", description: "A game", tags: ["Unity", "C#"] }
   ],
-  interests: ["coding", "games"],
+  interests: ["coding", "games", "AI"],
   contact: "your@email.com"
 };
 ```
 
-### Step 3: Customize Colors
-Find `:root` at the top of CSS:
+### 3. Add Custom AI Responses
 
-```css
-:root {
-  --accent: #ff6b9d;        /* Pink */
-  --accent-secondary: #4af0e8; /* Cyan */
+Add more keywords to the `responses` array:
+
+```javascript
+{
+  keywords: ['hobby', 'fun', 'free time'],
+  response: "When not coding, they enjoy gaming and hiking!"
 }
 ```
 
-### Step 4: Open in Browser
-Double-click `index.html` to preview!
+### 4. Change Colors
 
-## 🤖 Connecting to Real AI (Ollama)
+Find `:root` in CSS:
 
-The template comes with **demo mode** (fake AI responses). To connect to real Ollama:
+```css
+:root {
+  --accent: #ff6b9d;          /* Pink */
+  --accent-secondary: #4af0e8; /* Cyan */
+  --bg-primary: #06060b;       /* Background */
+}
+```
 
-### Option 1: Local Ollama API
+### 5. Update Sections
 
-Replace the `sendMessage` function with:
+Same as basic template — skills, projects, contact, etc.
+
+---
+
+## 🤖 AI Setup Guide
+
+### Prerequisites
+
+1. **Ollama** (free local AI)
+   - Download: https://ollama.com
+   - Run: `ollama serve`
+   - Install: `ollama pull llama3.2`
+
+2. **Claude Code** (optional)
+   - https://claude.com/claude-code
+
+### Connecting to Real Ollama
+
+The template works in **Demo Mode** by default. To connect to real AI:
+
+Find the `sendMessage` function and replace with:
 
 ```javascript
 async function sendMessage() {
@@ -61,7 +127,6 @@ async function sendMessage() {
 
   addMessage(text, true);
   chatInput.value = '';
-  
   typingIndicator.classList.add('active');
 
   try {
@@ -69,13 +134,14 @@ async function sendMessage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'llama3.2',  // or any model you have
-        prompt: `You are a helpful assistant for ${portfolioData.name}'s portfolio. 
-                 The owner is based in ${portfolioData.location}.
-                 Their skills: ${portfolioData.skills.join(', ')}.
-                 Their projects: ${portfolioData.projects.map(p => p.name + ': ' + p.description).join(', ')}.
+        model: 'llama3.2',
+        prompt: `You are a helpful assistant for ${portfolioData.name}'s portfolio.
+                 Owner: ${portfolioData.name}
+                 Location: ${portfolioData.location}
+                 Skills: ${portfolioData.skills.join(', ')}
+                 Projects: ${portfolioData.projects.map(p => p.name + ': ' + p.description).join(', ')}
                  
-                 User question: ${text}
+                 User: ${text}
                  
                  Give a friendly, brief answer:`,
         stream: false
@@ -87,97 +153,142 @@ async function sendMessage() {
     addMessage(data.response);
   } catch (error) {
     typingIndicator.classList.remove('active');
-    addMessage("Ollama isn't running! Start it with: ollama serve");
+    addMessage("Ollama isn't running. Start it with: ollama serve");
   }
 }
 ```
 
-### Option 2: Use Claude/OpenAI API
+### Using Claude Code for Customization
 
-```javascript
-async function sendMessage() {
-  const text = chatInput.value.trim();
-  if (!text) return;
+Tell Claude what you want:
 
-  addMessage(text, true);
-  chatInput.value = '';
-  typingIndicator.classList.add('active');
-
-  // Replace with your API call
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer YOUR_API_KEY'
-    },
-    body: JSON.stringify({
-      model: 'gpt-4',
-      messages: [{
-        role: 'system',
-        content: `You are ${portfolioData.name}'s portfolio assistant.`
-      }, {
-        role: 'user',
-        content: text
-      }]
-    })
-  });
-
-  const data = await response.json();
-  typingIndicator.classList.remove('active');
-  addMessage(data.choices[0].message.content);
-}
+```
+Update my AI portfolio:
+- Name: "Alex Chen"
+- Skills: Unity, C#, Blender, Unreal
+- Accent color: purple (#a855f7)
+- Add 4 more AI responses for: 'vr', 'unreal', '3d modeling', 'animation'
 ```
 
-## 📝 What to Edit
+### AI Prompt Templates
 
-| Section | Find | Change To |
-|---------|------|-----------|
-| Name/Info | `portfolioData` object | Your details |
-| Colors | `:root` CSS variables | Your colors |
-| Skills | `skills-grid` section | Your skills |
-| Projects | `projects-grid` section | Your projects |
-| Code | `code-section` | Your code samples |
-| Contact | `contact-grid` section | Your links |
+**Change everything:**
+```
+I want to customize my portfolio AI template with:
+- Name: [YOUR NAME]
+- Location: [YOUR CITY]
+- Skills: [YOUR SKILLS]
+- Projects: [YOUR PROJECTS]
+- Colors: [YOUR COLOR THEME]
 
-## 🎨 Color Themes
+Generate the updated portfolioData object and CSS variables.
+```
 
-| Theme | Pink | Cyan |
-|-------|------|------|
-| Default | `#ff6b9d` | `#4af0e8` |
-| Purple | `#9b59b6` | `#3498db` |
-| Sunset | `#e74c3c` | `#f39c12` |
-| Forest | `#27ae60` | `#1abc9c` |
+**Add AI responses:**
+```
+Add these AI responses to my portfolio:
+- Keywords: ['coffee', 'cafe']
+  Response: "They love coffee and often work from cafes!"
+- Keywords: ['music', 'spotify']
+  Response: "They listen to lo-fi while coding."
+```
+
+---
+
+## 🎨 Customization Reference
+
+### Color Themes
+
+| Theme | Pink | Cyan | Background |
+|-------|------|------|------------|
+| Pink/Cyan | #ff6b9d | #4af0e8 | #06060b |
+| Purple | #a855f7 | #8b5cf6 | #0f0f1a |
+| Orange | #f97316 | #fb923c | #0a0a0f |
+| Green | #22c55e | #4ade80 | #0a0f0a |
+
+### Chat Widget Customization
+
+**Change the floating button icon:**
+```javascript
+// Find this line and change the emoji
+<button class="chat-toggle" onclick="toggleChat()">💬</button>
+```
+
+**Change chat colors:**
+```css
+.chat-window { /* chat background */ }
+.message.ai { /* AI message color */ }
+.message.user { /* Your message color */ }
+```
+
+---
 
 ## 🌐 Hosting
 
-Same as basic template — drag folder to Netlify Drop!
+### Option 1: Netlify Drop
+1. https://app.netlify.com/drop
+2. Drag your folder
+3. Done!
+
+### Option 2: GitHub Pages
+1. Create repo, upload files
+2. Settings → Pages → Enable
+
+### Option 3: Vercel
+```bash
+npm i -g vercel
+vercel
+```
+
+---
+
+## ⚠️ Important: Configure AI First!
+
+Before publishing, make sure to:
+
+1. ✅ Edit `portfolioData` with your real info
+2. ✅ Add custom responses for common questions
+3. ✅ (Optional) Connect to Ollama for real AI
+4. ✅ Test the chat widget
+
+---
+
+## ✅ Checklist
+
+- [ ] Updated portfolioData object
+- [ ] Added custom AI responses
+- [ ] Changed colors (if wanted)
+- [ ] Updated all sections (about, skills, projects)
+- [ ] Changed contact links
+- [ ] Tested chat widget
+- [ ] (Optional) Connected to Ollama
+- [ ] Deployed to web!
+
+---
 
 ## 📁 File Structure
 
 ```
 portfolio-ai/
-└── index.html    ← Single file, everything included
+└── index.html    ← Single file with everything!
 ```
 
-## 🔧 Advanced: Custom AI Responses
+---
 
-Add more keywords to the `responses` array:
+## 🆘 Troubleshooting
 
-```javascript
-{
-  keywords: ['hobby', 'free time', 'fun'],
-  response: "When not coding, they enjoy gaming and hiking!"
-}
-```
+**Chat not working?**
+- Check portfolioData is filled out
+- Demo mode should work offline
 
-## ✅ Checklist
+**Ollama connection failed?**
+- Make sure Ollama is running: `ollama serve`
+- Try: `curl http://localhost:11434`
 
-- [ ] Updated portfolioData with your info
-- [ ] Changed colors if wanted
-- [ ] Added your real projects
-- [ ] Updated contact links
-- [ ] Tested chat widget
-- [ ] (Optional) Connected to Ollama
+**Cursor not showing?**
+- Normal on touch devices
+
+---
 
 ## 📝 License
 
@@ -185,4 +296,4 @@ MIT — Use it however you like!
 
 ---
 
-**Made with ❤️ using Claude Code + Ollama**
+**Made with ❤️ and AI**
